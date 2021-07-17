@@ -1,9 +1,9 @@
 package com.cybertek.step_definitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.AfterStep;
-import io.cucumber.java.Before;
-import io.cucumber.java.BeforeStep;
+import com.cybertek.utilities.Driver;
+import io.cucumber.java.*;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
@@ -19,9 +19,23 @@ public class Hooks {
     }
 
     @After
-    public void tearDownScenario(){
-        System.out.println("--Teardown steps are being applied...");
-        //Driver.closeDriver();
+    public void tearDownScenario(Scenario scenario){
+
+        //If my scenario fails
+        // take a screenshot
+
+        //scenario.isFailed --> is scenario fails: returns true
+        if (scenario.isFailed()){
+
+            byte [] screenShot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenShot,"image/png",scenario.getName());
+
+        }
+
+
+
+        System.out.println("AFTER---Teardown steps are being applied...");
+        //Driver.closeDriver()
     }
 
     @BeforeStep
