@@ -15,4 +15,4 @@ Feature: google search functionality
   Scenario: User search title verification
     Given User is on Google home page
     When User searches for "wooden spoon"
-    Then User should see "something else" in the title
+    Then User should see "wooden spoon" in the title
