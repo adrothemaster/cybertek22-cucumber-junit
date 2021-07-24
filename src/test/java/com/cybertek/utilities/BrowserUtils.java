@@ -1,8 +1,31 @@
 package com.cybertek.utilities;
 
+import org.openqa.selenium.WebElement;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class BrowserUtils {
 
- /*
+    /**
+    this method accepts List<WebElements> and returns List<String>
+     @param webElementsList
+     */
+
+    public static List<String> getElementsText(List<WebElement> webElementsList){
+        List<String> actualAsString = new ArrayList<>();
+
+        for (WebElement each : webElementsList) {
+            actualAsString.add(each.getText());
+
+        }
+        return actualAsString;
+    }
+
+
+
+
+ /**
     Method that will accept int  arg
     Wait for given second duration
 

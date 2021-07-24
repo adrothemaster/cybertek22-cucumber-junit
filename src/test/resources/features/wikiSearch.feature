@@ -24,7 +24,7 @@ Feature: Wikipedia search functionality
     And User clicks wiki search button
     Then User sees "Steve Jobs" is in the image header
 
-
+@ScenarioOutlines
   Scenario Outline: Wikipedia Search Functionality Header Verification
     Given User is on Wikipedia home page
     When User types "<searchValue>" in the wiki search box
@@ -33,3 +33,14 @@ Feature: Wikipedia search functionality
     Then User sees "<expectedTitle>" is in the wiki title
 
     Examples: search terms we are going to use in this template is as below
+      | searchValue      | expectedMainHeader | expectedTitle    |
+      | Steve Jobs       | Steve Jobs         | Steve Jobs       |
+      | Elon Musk        | Elon Musk          | Elon Musk        |
+      | Albert Einstein  | Albert Einstein    | Albert Einstein  |
+      | Conor McGregor   | Conor McGregor     | Conor McGregor   |
+      | Chuck Norris     | Chuck Norris       | Chuck Norris     |
+      | Marie Curie      | Marie Curie        | Marie Curie      |
+#      | Ibrahim Tatlises | Ibrahim Tatlises   | Ibrahim Tatlises |
+
+
+

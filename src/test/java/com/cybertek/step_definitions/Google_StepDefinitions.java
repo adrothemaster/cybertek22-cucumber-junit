@@ -15,25 +15,50 @@ public class Google_StepDefinitions {
                 String actualTitle = Driver.getDriver().getTitle();
                 String expectedTitle = "Google";
 
-                Assert.assertTrue(actualTitle.contains(expectedTitle));
+                Assert.assertTrue(actualTitle.equals(expectedTitle));
         }
 
-        @Given("User is on google home page")
-        public void user_is_on_gogle_home_page() {
+        @Given("User is on Google home page")
+        public void user_is_on_google_home_page() {
+
                 Driver.getDriver().get("https://www.google.com");
 
         }
-        @When("user searches for apple")
+
+
+        @When("User searches for apple")
         public void user_searches_for_apple() {
-                GoogleSearchPage googleSaerchPage = new GoogleSearchPage();
-                googleSaerchPage.searchBar.sendKeys("apple" + Keys.ENTER);
+
+                GoogleSearchPage googleSearchPage = new GoogleSearchPage();
+                googleSearchPage.searchBar.sendKeys("apple" + Keys.ENTER);
+
         }
         @Then("User should see apple in the title")
         public void user_should_see_apple_in_the_title() {
+
                 String actualTitle = Driver.getDriver().getTitle();
-                String expectedTitle = "apple";
+                String expectedInTitle = "apple";
 
-                Assert.assertTrue(actualTitle.contains(expectedTitle));
+                Assert.assertTrue(actualTitle.contains(expectedInTitle));
 
-    }
+        }
+
+
+        @When("User searches for {string}")
+        public void userSearchesFor(String arg0) {
+
+                GoogleSearchPage googleSearchPage = new GoogleSearchPage();
+                googleSearchPage.searchBar.sendKeys(arg0 + Keys.ENTER);
+        }
+
+        @Then("User should see {string} in the title")
+        public void userShouldSeeInTheTitle(String expectedTitle) {
+
+                String actualTitle = Driver.getDriver().getTitle();
+                String expectedInTitle = expectedTitle;
+
+                Assert.assertTrue(actualTitle.contains(expectedInTitle));
+
+        }
 }
+

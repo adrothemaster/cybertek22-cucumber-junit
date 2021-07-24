@@ -3,11 +3,16 @@ Feature: google search functionality
   i should be able to search whatever
   i want, and see relevant information
 
-  Scenario: search page title verification
-    Given User is on google home page
-    Then User should see title is Google
+  Scenario: Search page title verification
+    When User is on Google home page
+    Then  User should see title is Google
 
-  Scenario: User search title information
-    Given User is on google home page
-    When user searches for apple
+  Scenario: User search title verification
+    Given User is on Google home page
+    When User searches for apple
     Then User should see apple in the title
+  @google
+  Scenario: User search title verification
+    Given User is on Google home page
+    When User searches for "wooden spoon"
+    Then User should see "something else" in the title
